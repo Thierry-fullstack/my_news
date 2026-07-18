@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block importmap %}
+    {{ importmap(['app', 'register']) }}
+{% endblock %}
+
+{% block body %}
+    <div class="container-sm py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="contact-wrapper shadow rounded-1">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <div class="contact-info h-100" >
+                                <h6 class="mb-3 text-info-emphasis">Indications :</h6>
+                                <p class="my-3 text-warning-emphasis text-sm-center" id="dialogRegister"></p>
+                                <ul class="text-info-emphasis">
+                                    <li class="contact-item">
+                                        <p class="fw-light fw-bold" id="email-info"><i class="bi bi-envelope-at"></i>
+                                            &nbsp;Email</p>
+                                    </li>
+                                    <li class="contact-item">
+                                        <p class="fw-light fw-bold" id="pseudo-info"><i class="bi bi-person-fill"></i>
+                                            &nbsp;Pseudo</p>
+                                    </li>
+                                    <li class="contact-item">
+                                        <p class="fw-light fw-bold" id="portrait-info"><i class="bi bi-camera-fill"></i>
+                                            &nbsp;Portrait</p>
+                                    </li>
+                                    <li class="contact-item">
+                                        <p class="fw-light fw-bold" id="password-info"><i class="bi bi-incognito"></i>
+                                            &nbsp;Mot de passe</p>
+                                    </li>
+
+                                    <div class="contact-item mb-5" id="password-info">
+                                        <ul id='password_criteria' class="text-warning">
+                                            <li id="password_length_criteria" data-password-criteria class="password-criteria-true">10 caractères au total</li>
+                                            <li id="password_special_character_criteria" data-password-criteria>Caractère spécial</li>
+                                            <li id="password_uppercase_criteria" data-password-criteria>Majuscule</li>
+                                            <li id="password_number_criteria" data-password-criteria>Chiffre</li>
+                                            <li id="password_lowercase_criteria" data-password-criteria>Minuscule</li>
+                                        </ul>
+                                    </div>
+
+                                    <li class="contact-item">
+                                        <p class="fw-light fw-bold" id="agree-info"><i class="bi bi-pencil-square"></i>
+                                            &nbsp;Contrat </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="contact-form">
+                                <div class="bg-white text-center rounded-3 ">
+                                    <h1 class="mb-3 text-sm-center fw-bolder text-primary"><small>Inscription</small></h1>
+                                </div>
+                                <hr class="text-primary" />
+                                {{ form_start(registrationForm,{attr:{id:'registerForm',novalidate:'novalidate'}}) }}
+                                <div class="form-floating mb-3">
+                                    {{ form_widget(registrationForm.email) }}
+                                    {{ form_label(registrationForm.email)}}
+                                    <div class="text-danger small">
+                                        {{ form_errors(registrationForm.email)}}
+                                    </div>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    {{ form_widget(registrationForm.pseudo) }}
+                                    {{ form_label(registrationForm.pseudo)}}
+                                    <div class="text-danger small">
+                                        {{ form_errors(registrationForm.pseudo)}}
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3" id="registerPortrait" >
+                                    {{ form_widget(registrationForm.portrait) }}
+                                    {{ form_label(registrationForm.portrait)}}
+                                    <div class="text-danger small">
+                                        {{ form_errors(registrationForm.portrait)}}
+                                        <small id="errorPortrait"></small>
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    {{ form_widget(registrationForm.plainPassword,{'attr':{'class':'form-control text-primary-emphasis'}}) }}
+                                    {{ form_label(registrationForm.plainPassword)}}
+                                    <div class="text-danger small">
+                                        {{ form_errors(registrationForm.plainPassword)}}
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    {{ form_widget(registrationForm.agreeTerms,{'attr':{'class':'form-control text-primary-emphasis'}}) }}
+                                    {{ form_label(registrationForm.agreeTerms)}}
+                                    <div class="text-danger small">
+                                        {{ form_errors(registrationForm.agreeTerms)}}
+                                        <small id="errorAgreeTerms"></small>
+                                    </div>
+                                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                                </div>
+                                <div class="d-grid">
+                                    {{ form_row(registrationForm.register,{ attr:{ class:'btn btn-outline-primary col-12 mx-auto' } }) }}
+                                </div>
+                                {{ form_end(registrationForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

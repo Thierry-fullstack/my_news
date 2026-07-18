@@ -1,3 +1,157 @@
-body {
-    background-color: skyblue;
+
+html,body{
+    margin: auto;
+    height: 100%;
+    width: auto;
+    background-color: #FEFEFE;
 }
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+#card-login{
+    box-shadow: 0 0 2px #948E87, 0 0 2px #948E87, 0 0 2px #948E87;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #FAFAFA;
+}
+#labelAgreeRegister{
+    font-size: smaller;
+}
+
+/* reset password */
+#reset-password-card{
+    background-color: #fafafa;
+}
+
+/* form login */
+
+#bg-login-form{
+    background-color: #fafafa;
+}
+#dialogLogin{
+    height: 40px;
+}
+
+.card {
+    border-radius: 10px;
+}
+.card-body {
+    padding: 2rem;
+}
+.card-title {
+    margin-bottom: 1.5rem;
+}
+/* form register */
+
+#dialogRegister{
+    height: 40px;
+}
+.contact-wrapper {
+    /*border-radius: 20px;*/
+    overflow: hidden;
+    /*box-shadow: 0 5px 30px rgba(0,0,0,0.1);*/
+    background-color: #f4f4f4;
+}
+
+.contact-form {
+    padding: 35px;
+
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #0062cc;
+    box-shadow: none;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.contact-info {
+    /* background-image: linear-gradient(to right top, #d7d9dc, #e0e1e3, #e8e8ea, #f0f0f1, #f8f8f8); */
+    padding: 35px;
+    color: darkslateblue;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    height: 40px;
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+}
+
+li {
+    list-style-type: none;
+}
+#password_criteria{
+    display: none;
+    margin-left: 1px;
+}
+
+#password_criteria li {
+    font-size: 12px;
+}
+
+#password_criteria {
+    text-shadow: 0 0 0 lightgreen;
+    content: '\02714';
+}
+
+#password_criteria li[class="password-criteria-true"]::before,
+#password_criteria li[class="password-criteria-false"]::before
+{
+    margin-right: 0.5rem;
+    color: transparent;
+}
+
+#password_criteria li[class="password-criteria-true"]::before
+{
+    text-shadow: 0 0 0 lightgreen;
+    content: '\02714';
+}
+
+#password_criteria li[class="password-criteria-false"]::before
+{
+    text-shadow: 0 0 0 red;
+    content: '\02716';
+}
+
+
+
+
+
+
+
+

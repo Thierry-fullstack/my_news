@@ -78,14 +78,14 @@ const checkFieldsRegister = function(champs,bouton)
         //console.log(counter);
         if(counter === fieldSelect.length)
         {
-            bouton.classList.remove('btn-outline-primary');
-            bouton.classList.add('btn-primary');
+            bouton.classList.remove('btn-outline-dark');
+            bouton.classList.add('btn-dark');
             bouton.textContent="Validez votre saisie"
             bouton.removeAttribute('disabled','disabled');
         }else if(counter !== fieldSelect.length)
         {
-            bouton.classList.remove('btn-primary');
-            bouton.classList.add('btn-outline-primary');
+            bouton.classList.remove('btn-dark');
+            bouton.classList.add('btn-outline-dark');
             bouton.textContent="Saisir vos coordonnées"
             bouton.setAttribute('disabled','disabled')
         }
@@ -109,16 +109,34 @@ const checkFielsLogin = function(champs,bouton){
         }
     }
     if(counter === fieldSelect.length){
-        bouton.classList.remove('btn-outline-primary');
-        bouton.classList.add('btn-primary');
+        bouton.classList.remove('btn-outline-dark');
+        bouton.classList.add('btn-dark');
         bouton.textContent = " Soumettre votre saisie";
         bouton.removeAttribute('disabled','disabled');
     }else if(counter !== fieldSelect.length){
-        bouton.classList.remove('btn-primary');
-        bouton.classList.add('btn-outline-primary');
+        bouton.classList.remove('btn-dark');
+        bouton.classList.add('btn-outline-dark');
         bouton.textContent="Saisir vos données de connexion";
         bouton.setAttribute('disabled','disabled');
     }
 }
 
-export {showMessage,alertField,successField,clearField,invalidFeedback,checkFieldsRegister,alertChamps,checkFielsLogin};
+/* checkField request-password */
+const checkFieldResetPassword = function(champ,bouton){
+    if(champ.value !=='' && champ.classList.contains('is-valid'))
+    {
+        bouton.classList.remove('btn-outline-dark');
+        bouton.classList.add('btn-dark');
+        bouton.textContent = " Soumettre votre saisie";
+        bouton.removeAttribute('disabled','disabled');
+    }
+    else if(champ.value ==='' || champ.classList.contains('is-invalid'))
+    {
+        bouton.classList.remove('btn-dark');
+        bouton.classList.add('btn-outline-dark');
+        bouton.textContent="Saisir vos données de connexion";
+        bouton.setAttribute('disabled','disabled');
+    }
+}
+
+export {showMessage,alertField,successField,clearField,invalidFeedback,checkFieldsRegister,alertChamps,checkFielsLogin,checkFieldResetPassword};

@@ -36,7 +36,7 @@ class RegistrationFormType extends AbstractType
                     new Sequentially([
                         new NotBlank(message: 'Indiquez votre email'),
                         new Length(max: 180,maxMessage: 'maximum 180 caractères '),
-                        new Email(message: 'l\'email saisi n\'est valide ')
+                        new Email(message: 'l\'email saisi n\'est pas valide ')
                     ])
                 ]
             ])

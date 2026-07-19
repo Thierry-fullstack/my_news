@@ -22,9 +22,9 @@
                 <div class="card shadow  rounded-3" id="bg-login-form">
                     <div class="card-body">
                         <div class="bg-white" >
-                            <h2 class="card-title text-center shadow-sm rounded-3 fw-bolder mb-4 text-primary"><small>Connexion</small></h2>
+                            <h2 class="card-title text-center shadow-sm rounded-3  fst-italic mb-4 text-dark-emphasis"><small>Connexion</small></h2>
                         </div>
-                        <hr class="text-primary-emphasis" />
+                        <hr class="text-warning" />
                         <div class="d-grid gap-2 mb-3">
                             <ul class="list-group">
                                 <small><li id="dialogLogin" class="list-group-item text-warning rounded-3"></li></small>
@@ -47,11 +47,11 @@
                                 <label class="form-check-label text-warning-emphasis" for="rememberMe" id="labelRemember"><small>Se souvenir de moi</small></label>
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-outline-primary" id="submitConnect">Saisir vos données de connexion</button>
+                                <button type="submit" class="btn btn-outline-dark text-capitalize" id="submitConnect">Saisir vos données de connexion</button>
                             </div>
                         </form>
                         <div class="text-center mt-3">
-                            <a href="{{ path('app_forgot_password_request') }}" class=" text-warning text-decoration-none "
+                            <a href="{{ path('app_forgot_password_request') }}" class=" text-warning  fst-italic text-decoration-none "
                                data-bs-toggle="tooltip" data-bs-placement="top" title="Mot de passe oublié">Mot de passe oublié ?</a>
                         </div>
                     </div>

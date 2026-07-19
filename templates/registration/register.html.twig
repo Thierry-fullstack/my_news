@@ -55,9 +55,9 @@
                         <div class="col-md-8">
                             <div class="contact-form">
                                 <div class="bg-white text-center rounded-3 ">
-                                    <h1 class="mb-3 text-sm-center fw-bolder text-primary"><small>Inscription</small></h1>
+                                    <h1 class="mb-3 text-sm-center  fst-italic text-dark-emphasis"><small>Inscription</small></h1>
                                 </div>
-                                <hr class="text-primary" />
+                                <hr class="text-warning" />
                                 {{ form_start(registrationForm,{attr:{id:'registerForm',novalidate:'novalidate'}}) }}
                                 <div class="form-floating mb-3">
                                     {{ form_widget(registrationForm.email) }}
@@ -99,10 +99,15 @@
                                     <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
                                 </div>
                                 <div class="d-grid">
-                                    {{ form_row(registrationForm.register,{ attr:{ class:'btn btn-outline-primary col-12 mx-auto' } }) }}
+                                    {{ form_row(registrationForm.register,{ attr:{ class:'btn btn-outline-dark text-capitalize col-12 mx-auto' } }) }}
                                 </div>
                                 {{ form_end(registrationForm) }}
+                                <div class="text-center mt-3">
+                                    <a href="{{ path('app_login') }}" class=" text-warning  fst-italic text-decoration-none "
+                                       data-bs-toggle="tooltip" data-bs-placement="top" title="Déjà inscrit ?">Déjà inscrit ?</a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

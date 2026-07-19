@@ -19,8 +19,10 @@ window.onload = () =>{
         const labelEmail = loginForm.querySelector('#labelEmail');
         const labelPassword = loginForm.querySelector('#labelPassword');
         const labelRemember = loginForm.querySelector('#labelRemember');
+
         /* unactivated button submit */
         inputSubmit.setAttribute('disabled','disabled');
+
         let message ='* Champs obligatoires';
         showMessage(dialogLogin,message);
         /* eventlistener email */

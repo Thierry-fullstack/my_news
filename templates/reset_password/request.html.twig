@@ -1,22 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
-
+{% block title %}Réinitialisation {% endblock %}
+{% block importmap %}
+    {{ importmap(['app', 'request-password']) }}
+{% endblock %}
 {% block body %}
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <h1>Reset your password</h1>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 py-5">
+                <div class="card reset-card shadow rounded-1" id="reset-password-card">
+                    <div class="card-body p-4">
+                        <!-- Step  Email Verification -->
+                        <div class="bg-white shadow-sm" >
+                            <h2 class="card-title mb-3 text-center fst-italic text-dark-emphasis"><small>Email Verification</small></h2>
+                        </div>
+                        <hr class="text-warning" />
+                        <div class="step-content" id="step-verification">
+                            {{ form_start(requestForm,{ attr : { id:'resetPasswordForm',novalidate: 'novalidate'}}) }}
+                            <div class="form-floating mb-3">
+                                {{ form_widget(requestForm.email) }}
+                                {{ form_label(requestForm.email)}}
+                                <div class="text-danger small">
+                                    {{ form_errors(requestForm.email)}}
+                                </div>
+                            </div>
+                            <div class="text-warning fst-italic text-center mb-5">
+                                <small>
+                                    Nous vous enverrons un lien, après connaissance de votre adresse mail
+                                </small>
+                            </div>
+                            <div class="d-grid">
+                                {{ form_widget(requestForm.submit) }}
+                                {{ form_label(requestForm.submit) }}
+                            </div>
+                            {{ form_end(requestForm) }}
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address, and we will send you a
-                link to reset your password.
-            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+    </div>
 {% endblock %}

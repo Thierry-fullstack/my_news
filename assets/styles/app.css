@@ -147,6 +147,9 @@ li {
     text-shadow: 0 0 0 red;
     content: '\02716';
 }
+/*input[type='submit']{
+    text-transform: capitalize;
+}*/
 
 
 

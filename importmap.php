@@ -44,4 +44,8 @@ return [
         'path' => './assets/js/login.js',
         'entrypoint' => true,
     ],
+    'request-password' => [
+        'path' => './assets/js/request-password.js',
+        'entrypoint' => true,
+    ],
 ];

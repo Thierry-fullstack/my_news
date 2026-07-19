@@ -60,19 +60,35 @@ const invalidFeedback = function(champs)
 * form register
 unlock button submit if all' green
  */
-const checkFieldsRegister = function(mail,pseudo,password,file,checkbox,submit){
-    if(mail.classList.contains('is-valid') && pseudo.classList.contains('is-valid') && password.classList.contains('is-valid') && file.classList.contains('is-valid')
-        && checkbox.classList.contains('is-valid')){
-        submit.classList.remove('btn-outline-primary');
-        submit.classList.add('btn-primary');
-        submit.textContent="Validez votre saisie"
-        submit.removeAttribute('disabled','disabled');
-    }else{
-        submit.classList.remove('btn-primary');
-        submit.classList.add('btn-outline-primary');
-        submit.textContent="Saisir vos coordonnées"
-        submit.setAttribute('disabled','disabled')
+const checkFieldsRegister = function(champs,bouton)
+{
+    let fieldSelect = [];
+    let counter = 0;
+    for(let i = 0; i < champs.length; i++) {
+        if (champs[i].type === 'email' || champs[i].type === 'text' || champs[i].type === 'file' || champs[i].type === 'password' || champs[i].type === 'checkbox') {
+            fieldSelect[i] = champs[i];
+        }
     }
+        for (let i = 0; i < fieldSelect.length; i++) {
+            if (fieldSelect[i].value !== '' && fieldSelect[i].classList.contains('is-valid') || fieldSelect[i].checked && fieldSelect[i].classList.contains('is-valid')) {
+                counter++;
+            }
+
+        }
+        //console.log(counter);
+        if(counter === fieldSelect.length)
+        {
+            bouton.classList.remove('btn-outline-primary');
+            bouton.classList.add('btn-primary');
+            bouton.textContent="Validez votre saisie"
+            bouton.removeAttribute('disabled','disabled');
+        }else if(counter !== fieldSelect.length)
+        {
+            bouton.classList.remove('btn-primary');
+            bouton.classList.add('btn-outline-primary');
+            bouton.textContent="Saisir vos coordonnées"
+            bouton.setAttribute('disabled','disabled')
+        }
 }
 
 /*

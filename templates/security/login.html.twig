@@ -1,41 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Connection{% endblock %}
+{% block importmap %}
+    {{ importmap(['app', 'login']) }}
+{% endblock %}
 
 {% block body %}
-    <!-- Responsive navbar-->
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-    <!-- Page header with logo and tagline-->
-    <!-- Page content-->
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
-            </div>
-        {% endif %}
-
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-        <label for="inputPassword">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
         </div>
+    {% endif %}
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
-    <!-- Footer-->
-
-
+    <div class="container mt-5 ">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="card shadow  rounded-3" id="bg-login-form">
+                    <div class="card-body">
+                        <div class="bg-white" >
+                            <h2 class="card-title text-center shadow-sm rounded-3 fw-bolder mb-4 text-primary"><small>Connexion</small></h2>
+                        </div>
+                        <hr class="text-primary-emphasis" />
+                        <div class="d-grid gap-2 mb-3">
+                            <ul class="list-group">
+                                <small><li id="dialogLogin" class="list-group-item text-warning rounded-3"></li></small>
+                            </ul>
+                        </div>
+                        <form method="post" id="loginForm" novalidate>
+                            <div class="form-floating mb-3">
+                                <input type="email" value="{{ last_username }}" class="form-control shadow-sm rounded-2 text-primary-emphasis " name="email" id="inputEmail" required
+                                       autocomplete="email" >
+                                <label for="inputEmail" class="form-check-label text-warning-emphasis" id="labelEmail">Email *</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" name="password" id="inputPassword" class="form-control shadow-sm rounded-2 text-primary-emphasis" id="inputPassword" required
+                                       autocomplete="current-password" >
+                                <label for="inputPassword" class="form-check-label text-warning-emphasis" id="labelPassword">Mot de passe *</label>
+                            </div>
+                            <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" name="_remember_me" class="form-check-input shadow-sm text-primary-emphasis" id="inputRemember">
+                                <label class="form-check-label text-warning-emphasis" for="rememberMe" id="labelRemember"><small>Se souvenir de moi</small></label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-outline-primary" id="submitConnect">Saisir vos données de connexion</button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="{{ path('app_forgot_password_request') }}" class=" text-warning text-decoration-none "
+                               data-bs-toggle="tooltip" data-bs-placement="top" title="Mot de passe oublié">Mot de passe oublié ?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

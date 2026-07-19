@@ -40,4 +40,8 @@ return [
         'path' => './assets/js/register.js',
         'entrypoint' => true,
     ],
+    'login' => [
+        'path' => './assets/js/login.js',
+        'entrypoint' => true,
+    ],
 ];

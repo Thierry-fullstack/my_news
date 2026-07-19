@@ -17,30 +17,10 @@ const controlPassword = function (champ,info,password) {
 }
 
 /* control login form */
-const checkLoginPassword = function (champ) {
+const checkLoginPassword = function (champ,info) {
     const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$');
-    champ.value.match(passwordRegex) ? successLoginPassword(champ) : alertLoginPassword(champ);
+    champ.value.match(passwordRegex) ? successField(champ,info) : alertField(champ,info);
 }
 
-const successLoginPassword = function(champ){
-    champ.classList.remove('is-invalid');
-    champ.classList.add("is-valid");
-}
-
-const alertLoginPassword = function (champ) {
-    champ.classList.remove('is-valid');
-    champ.classList.add("is-invalid");
-}
-
-const clearLoginBorderPassword = function(champ){
-    if(champ.classList.contains('is-invalid')) {
-        champ.classList.remove('is-invalid');
-        champ.value="";
-    }
-    if(champ.classList.contains('is-valid')) {
-        champ.classList.remove('is-valid');
-        champ.value ="";
-    }
-}
 
 export {controlPassword,checkLoginPassword};

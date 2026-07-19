@@ -33,26 +33,16 @@ const clearBorderChbox = function(champ,info){
 verify checkbox if checked in loginForm
  */
 
-const checkLoginCheckbox = function(champ,dial){
+const checkLoginCheckbox = function(champ,dial,info){
     if(champ.checked){
         let message="";
         showMessage(dial,message);
-        successLoginCbox(champ);
+        successField(champ,info);
     }else if(!(champ.checked)){
         let message="Se souvenir de moi";
         showMessage(dial,message);
-        alertLoginCbox(champ);
+        //alertField(champ,info);
     }
-}
-
-const successLoginCbox = function(champ){
-    champ.classList.remove('is-invalid');
-    champ.classList.add("is-valid");
-}
-
-const alertLoginCbox = function (champ) {
-    champ.classList.remove('is-valid');
-    champ.classList.add("is-invalid");
 }
 
 const clearLoginCbox = function(champ){

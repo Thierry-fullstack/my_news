@@ -7,6 +7,9 @@ const showMessage = function(balise,text)
 const successField = function(champ,info){
     champ.classList.remove('is-invalid');
     champ.classList.add("is-valid");
+    if(info.classList.contains('text-warning-emphasis')){
+        info.classList.remove('text-warning-emphasis');
+    }
     info.classList.remove('text-danger');
     info.classList.add('text-success');
 }
@@ -14,6 +17,9 @@ const successField = function(champ,info){
 const alertField = function (champ,info) {
     champ.classList.remove('is-valid');
     champ.classList.add("is-invalid");
+    if(info.classList.contains('text-warning-emphasis')){
+        info.classList.remove('text-warning-emphasis');
+    }
     info.classList.remove('text-success');
     info.classList.add('text-danger');
 }
@@ -22,11 +28,13 @@ const clearField = function(champ,info){
     if(champ.classList.contains('is-invalid')) {
         champ.classList.remove('is-invalid');
         info.classList.remove('text-danger');
+        info.classList.add('text-warning-emphasis');
         champ.value="";
     }
     if(champ.classList.contains('is-valid') ) {
         champ.classList.remove('is-valid');
         info.classList.remove('text-success');
+        info.classList.add('text-warning-emphasis');
         champ.value ="";
     }
 }
@@ -67,4 +75,34 @@ const checkFieldsRegister = function(mail,pseudo,password,file,checkbox,submit){
     }
 }
 
-export {showMessage,alertField,successField,clearField,invalidFeedback,checkFieldsRegister,alertChamps};
+/*
+* form login
+unlock button submit if email & password are green
+ */
+const checkFielsLogin = function(champs,bouton){
+    let fieldSelect = [];
+    let counter = 0;
+    for(let i =0; i < champs.length; i++){
+        if(champs[i].type === 'email' || champs[i].type==='password'){
+            fieldSelect[i]= champs[i];
+        }
+    }
+    for(let i =0; i < fieldSelect.length;i++){
+        if(fieldSelect[i].value !=='' && fieldSelect[i].classList.contains('is-valid')){
+            counter++;
+        }
+    }
+    if(counter === fieldSelect.length){
+        bouton.classList.remove('btn-outline-primary');
+        bouton.classList.add('btn-primary');
+        bouton.textContent = " Soumettre votre saisie";
+        bouton.removeAttribute('disabled','disabled');
+    }else if(counter !== fieldSelect.length){
+        bouton.classList.remove('btn-primary');
+        bouton.classList.add('btn-outline-primary');
+        bouton.textContent="Saisir vos données de connexion";
+        bouton.setAttribute('disabled','disabled');
+    }
+}
+
+export {showMessage,alertField,successField,clearField,invalidFeedback,checkFieldsRegister,alertChamps,checkFielsLogin};

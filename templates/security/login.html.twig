@@ -22,7 +22,7 @@
                 <div class="card shadow  rounded-3" id="bg-login-form">
                     <div class="card-body">
                         <div class="bg-white" >
-                            <h2 class="card-title text-center shadow-sm rounded-3  fst-italic mb-4 text-dark-emphasis"><small>Connexion</small></h2>
+                            <h1 class="card-title text-center shadow-sm rounded-3 fst-italic text-bg-secondary text-black mb-4">Connexion</h1>
                         </div>
                         <hr class="text-warning" />
                         <div class="d-grid gap-2 mb-3">
@@ -32,18 +32,18 @@
                         </div>
                         <form method="post" id="loginForm" novalidate>
                             <div class="form-floating mb-3">
-                                <input type="email" value="{{ last_username }}" class="form-control shadow-sm rounded-2 text-primary-emphasis " name="email" id="inputEmail" required
+                                <input type="email" value="{{ last_username }}" class="form-control rounded-2 text-primary-emphasis " name="email" id="inputEmail" required
                                        autocomplete="email" >
                                 <label for="inputEmail" class="form-check-label text-warning-emphasis" id="labelEmail">Email *</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" name="password" id="inputPassword" class="form-control shadow-sm rounded-2 text-primary-emphasis" id="inputPassword" required
+                                <input type="password" name="password" id="inputPassword" class="form-control rounded-2 text-primary-emphasis" id="inputPassword" required
                                        autocomplete="current-password" >
                                 <label for="inputPassword" class="form-check-label text-warning-emphasis" id="labelPassword">Mot de passe *</label>
                             </div>
                             <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
                             <div class="mb-3 form-check">
-                                <input type="checkbox" name="_remember_me" class="form-check-input shadow-sm text-primary-emphasis" id="inputRemember">
+                                <input type="checkbox" name="_remember_me" class="form-check-input text-primary-emphasis" id="inputRemember">
                                 <label class="form-check-label text-warning-emphasis" for="rememberMe" id="labelRemember"><small>Se souvenir de moi</small></label>
                             </div>
                             <div class="d-grid">

@@ -121,7 +121,8 @@ const checkFielsLogin = function(champs,bouton){
     }
 }
 
-/* checkField request-password */
+
+/* form request-password - checkField request-password */
 const checkFieldResetPassword = function(champ,bouton){
     if(champ.value !=='' && champ.classList.contains('is-valid'))
     {

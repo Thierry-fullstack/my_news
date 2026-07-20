@@ -27,7 +27,7 @@ window.onload = () =>{
             checkFieldResetPassword(this,inputSubmit);
         });
         inputSubmit.addEventListener('click',function (event){
-            if(inputEmail.value === '' || inputEmail.classList.contains('is-inval'))
+            if(inputEmail.value === '' || inputEmail.classList.contains('is-invalid'))
             {
                 alertField(inputEmail,labelEmail);
                 event.preventDefault();

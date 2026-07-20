@@ -29,8 +29,8 @@ html,body{
 }
 
 #card-login{
-    box-shadow: 0 0 2px #948E87, 0 0 2px #948E87, 0 0 2px #948E87;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 1px;
+    box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
     background-color: #FAFAFA;
 }
 #labelAgreeRegister{
@@ -52,7 +52,8 @@ html,body{
 }
 
 .card {
-    border-radius: 10px;
+    border-radius: 1px;
+    box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
 }
 .card-body {
     padding: 2rem;
@@ -70,20 +71,22 @@ html,body{
     overflow: hidden;
     /*box-shadow: 0 5px 30px rgba(0,0,0,0.1);*/
     background-color: #f4f4f4;
+    box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
+
 }
 
 .contact-form {
     padding: 35px;
 
 }
-
+/*
 .form-control {
     border-radius: 10px;
     padding: 12px 15px;
     border: 2px solid #eee;
     transition: all 0.3s ease;
 }
-
+*/
 .form-control:focus {
     border-color: #0062cc;
     box-shadow: none;

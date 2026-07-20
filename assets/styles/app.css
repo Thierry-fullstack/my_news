@@ -120,7 +120,7 @@ li {
 }
 #password_criteria{
     display: none;
-    margin-left: 1px;
+    margin-left: 0px;
 }
 
 #password_criteria li {

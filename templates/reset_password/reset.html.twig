@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Nouveau mot de passe{% endblock %}
-
+{% block importmap %}
+    {{ importmap(['app', 'new-password']) }}
+{% endblock %}
 {% block body %}
     <div class="container-sm py-5">
         <div class="row justify-content-center">
@@ -11,18 +13,13 @@
                         <div class="col-md-4">
                             <div class="contact-info h-100" >
                                 <h6 class="mb-3 text-warning">Indications :</h6>
-                                <p class="my-3 text-warning-emphasis text-sm-center" id="dialogRegister"></p>
-                                <ul class="text-info-emphasis">
+                                <p class="my-3 text-warning-emphasis text-sm-center fs-6" id="dialogNewpassword"></p>
+                                <ul class="text-info-emphasis mt-5">
                                     <li class="contact-item">
                                         <p class="fw-light fw-bold" id="password-info"><i class="bi bi-envelope-at"></i>
                                             Mot de passe</p>
                                     </li>
-
-                                    <li class="contact-item">
-                                        <p class="fw-light fw-bold" id="confirmation-info"><i class="bi bi-incognito"></i>
-                                            Confirmation</p>
-                                    </li>
-                                    <div class="contact-item mb-5" id="password-info">
+                                    <div class="contact-item mb-5" id="password-information">
                                         <ul id='password_criteria' class="text-warning">
                                             <li id="password_length_criteria" data-password-criteria class="password-criteria-true">10 caractères au total</li>
                                             <li id="password_special_character_criteria" data-password-criteria>Caractère spécial</li>
@@ -31,6 +28,11 @@
                                             <li id="password_lowercase_criteria" data-password-criteria>Minuscule</li>
                                         </ul>
                                     </div>
+                                    <li class="contact-item">
+                                        <p class="fw-light fw-bold" id="confirmation-info"><i class="bi bi-incognito"></i>
+                                            Confirmation</p>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -43,16 +45,13 @@
                                 <hr class="text-warning" />
                                 {{ form_start(resetForm,{attr:{id:'resetPasswordForm',novalidate:'novalidate'}}) }}
                                 <div class="form-floating mb-3">
-                                    {{ form_row(resetForm.plainPassword,{'attr':{'class':'form-control text-primary-emphasis'}}) }}
-
+                                    {{ form_widget(resetForm.plainPassword) }}
                                     <div class="text-danger small">
                                         {{ form_errors(resetForm.plainPassword)}}
                                     </div>
                                 </div>
-
-
                                 <div class="d-grid">
-                                    <button class="btn btn-outline-dark text-capitalize col-12 mx-auto">Nouveau mot de passe</button>
+                                  {{ form_row(resetForm.submit) }}
                                 </div>
 
                                 {{ form_end(resetForm) }}

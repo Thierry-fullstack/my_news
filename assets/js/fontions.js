@@ -140,4 +140,27 @@ const checkFieldResetPassword = function(champ,bouton){
     }
 }
 
-export {showMessage,alertField,successField,clearField,invalidFeedback,checkFieldsRegister,alertChamps,checkFielsLogin,checkFieldResetPassword};
+/* form new-password control  2 fiels password */
+const checkFieldsNewPassword = function(champs,bouton)
+{
+    let counter = 0;
+    for(let i =0; i < champs.length;i++){
+        if(champs[i].value !=='' && champs[i].classList.contains('is-valid')){
+            counter++;
+        }
+    }
+    if(counter === champs.length){
+        bouton.classList.remove('btn-outline-dark');
+        bouton.classList.add('btn-dark');
+        bouton.textContent = " Soumettre votre saisie";
+        bouton.removeAttribute('disabled','disabled');
+    }else if(counter !== champs.length){
+        bouton.classList.remove('btn-dark');
+        bouton.classList.add('btn-outline-dark');
+        bouton.textContent="Saisir vos données de connexion";
+        bouton.setAttribute('disabled','disabled');
+    }
+}
+
+export {showMessage,alertField,successField,clearField,invalidFeedback,
+    checkFieldsRegister,alertChamps,checkFielsLogin,checkFieldResetPassword,checkFieldsNewPassword};

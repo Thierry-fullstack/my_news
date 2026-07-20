@@ -5,6 +5,7 @@ namespace App\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -18,6 +19,7 @@ class ChangePasswordFormType extends AbstractType
     {
         $builder
             ->add('plainPassword', RepeatedType::class, [
+                'attr'=>['class'=>'text-warning-emphasis'],
                 'type' => PasswordType::class,
                 'options' => [
                     'attr' => [
@@ -33,25 +35,28 @@ class ChangePasswordFormType extends AbstractType
                             new Length(
                                 min: 10,
                                 max: 10,
-                                minMessage: '',
-                                maxMessage: '',
+                                minMessage: '!',
+                                maxMessage: '!',
                             ),
                             new Regex(
                                 pattern: '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$/i',
-                                message: '',
+                                message: '!',
                                 htmlPattern: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$'
                             )
                         ])
                     ],
-                    'label' => 'Nouveau mot de passe',
+                    'label' => 'Mot de passe',
                 ],
                 'second_options' => [
-                    'label' => 'Confirmation du nouveau mot de passe',
+                    'label' => 'Confirmation',
                 ],
-                'invalid_message' => '',
+                'invalid_message' => '!',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+            ])
+            ->add('submit',SubmitType::class,['attr'=>['class'=>'btn btn-outline-dark text-capitalize col-12 mx-auto'],
+            'label'=>'Saisir Nouveau mot de passe',
             ])
         ;
     }

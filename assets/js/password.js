@@ -11,7 +11,7 @@ const controlPassword = function (champ,info,password) {
     password_uppercase_criteria.className = `password-criteria-${/[A-Z]/.test(password)}`;
     password_number_criteria.className = `password-criteria-${/[0-9]/.test(password)}`;
     password_lowercase_criteria.className = `password-criteria-${/[a-zà-ú]/.test(password)}`;
-    password_length_criteria.textContent = `10 caractères au total  =>  ( ${password.length} ) `;
+    password_length_criteria.textContent = `( ${password.length} ) sur 10 caractères`;
     const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$');
     champ.value.match(passwordRegex) ? successField(champ,info) : alertField(champ,info);
 }

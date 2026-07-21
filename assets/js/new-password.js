@@ -1,5 +1,13 @@
-import {showMessage,clearField,checkFieldsNewPassword,alertChamps,successField,alertField} from "./fontions.js";
-import { controlPassword} from "./password.js";
+import {
+    showMessage,
+    clearField,
+    checkFieldsNewPassword,
+    alertChamps,
+    successField,
+    alertField,
+    invalidFeedback,
+} from "./fontions.js";
+import { controlPassword,controlPasswordTwin} from "./password.js";
 
 window.onload = () => {
     const resetPasswordForm = document.body.querySelector('#resetPasswordForm');
@@ -8,6 +16,10 @@ window.onload = () => {
         const allInputs = resetPasswordForm.querySelectorAll("input[type='password']");
         const plainPassword_first = resetPasswordForm.querySelector('#change_password_form_plainPassword_first');
         const plainPassword_second = resetPasswordForm.querySelector('#change_password_form_plainPassword_second');
+
+        /* div error */
+        const invalidPasswordField = resetPasswordForm.querySelector('#change_password_form_plainPassword_first_error1');
+        const invalidConfirmField = resetPasswordForm.querySelector('#change_password_form_plainPassword_second_error1');
         const changePasswordSubmit = resetPasswordForm.querySelector('#change_password_form_submit');
 
         /* indication messages */
@@ -42,6 +54,8 @@ window.onload = () => {
             all_password_criteria.forEach((li)=>li.className="");
             password_length_criteria.textContent = " 10 caractères ";
         }
+            if(invalidPasswordField)
+                invalidFeedback(invalidPasswordField);
         password_criteria.style.display="block";
         });
         plainPassword_first.addEventListener('input',function ({currentTarget}){
@@ -54,24 +68,34 @@ window.onload = () => {
             controlPassword(this,passwordInfo,password);
             checkFieldsNewPassword(allInputs,changePasswordSubmit);
         });
+
         /* eventlistener password_second */
         plainPassword_second.addEventListener('focus',function(){
             message='Confirmer votre mot de passe';
             showMessage(dialogpassword,message);
             clearField(this,confirmationInfo);
             checkFieldsNewPassword(allInputs,changePasswordSubmit);
+            if(invalidConfirmField)
+                invalidFeedback(invalidConfirmField);
+                password_criteria.style.display="none";
         });
-        plainPassword_second.addEventListener('input',function(){
+        plainPassword_second.addEventListener('input',function({currentTarget}){
+            let password = currentTarget.value;
+            controlPasswordTwin(this,password) ? successField(this,confirmationInfo) : alertChamps(this,confirmationInfo);
             if(this.value !=='')
             (this.value === plainPassword_first.value) ? successField(this,confirmationInfo): alertField(this,confirmationInfo);
             checkFieldsNewPassword(allInputs,changePasswordSubmit);
         });
-        plainPassword_second.addEventListener('blur',function(){
+        plainPassword_second.addEventListener('blur',function({currentTarget}){
+            let password = currentTarget.value;
+            controlPasswordTwin(this,password) ? successField(this,confirmationInfo) : alertChamps(this,confirmationInfo);
             if(this.value !=='')
             (this.value === plainPassword_first.value) ? successField(this,confirmationInfo): alertField(this,confirmationInfo);
             checkFieldsNewPassword(allInputs,changePasswordSubmit);
         });
-        changePasswordSubmit.addEventListener('click',function(event){
+
+        /* eventlistener on input submit */
+       changePasswordSubmit.addEventListener('click',function(event){
             let counter = 0;
            for(let i = 0; i < allInputs.length; i++)
            {
@@ -88,5 +112,7 @@ window.onload = () => {
                 return false;
            }
         });
-    } /* end if */
-} /* end window.onload */
+    }
+    /* end if */
+}
+    /* end window.onload */

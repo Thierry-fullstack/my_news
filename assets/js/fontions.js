@@ -39,6 +39,11 @@ const clearField = function(champ,info){
     }
 }
 
+const successChamps = function (champ) {
+    champ.classList.remove('is-invalid');
+    champ.classList.add('is-valid');
+}
+
 const alertChamps = function (champ) {
     champ.classList.remove('is-valid');
     champ.classList.add("is-invalid");
@@ -47,13 +52,11 @@ const alertChamps = function (champ) {
 
 const invalidFeedback = function(champs)
 {
-
         if(champs.classList.contains('invalid-feedback'))
         {
             champs.classList.remove('invalid-feedback');
             champs.innerHTML="";
         }
-
 }
 
 /*
@@ -163,4 +166,4 @@ const checkFieldsNewPassword = function(champs,bouton)
 }
 
 export {showMessage,alertField,successField,clearField,invalidFeedback,
-    checkFieldsRegister,alertChamps,checkFielsLogin,checkFieldResetPassword,checkFieldsNewPassword};
+    checkFieldsRegister,alertChamps,successChamps,checkFielsLogin,checkFieldResetPassword,checkFieldsNewPassword};

@@ -150,9 +150,39 @@ li {
     text-shadow: 0 0 0 red;
     content: '\02716';
 }
-/*input[type='submit']{
-    text-transform: capitalize;
-}*/
+
+/* concerne info envoi lien email reset */
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+.btn-custom {
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #e85c50;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fadeInUp {
+    animation: fadeInUp 0.7s ease-out;
+}
 
 
 

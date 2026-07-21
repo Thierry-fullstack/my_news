@@ -1,4 +1,4 @@
-import { successField,alertField} from "./fontions.js";
+import { successField,alertField,successChamps,alertChamps} from "./fontions.js";
 
 /* control register form */
 /* pattern: '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{12,12}$/i',
@@ -16,6 +16,11 @@ const controlPassword = function (champ,info,password) {
     champ.value.match(passwordRegex) ? successField(champ,info) : alertField(champ,info);
 }
 
+const controlPasswordTwin = function (champ,password){
+    const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$');
+    champ.value.match(passwordRegex) ? successChamps(champ) : alertChamps(champ);
+}
+
 /* control login form */
 const checkLoginPassword = function (champ,info) {
     const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$');
@@ -23,4 +28,4 @@ const checkLoginPassword = function (champ,info) {
 }
 
 
-export {controlPassword,checkLoginPassword};
+export {controlPassword,checkLoginPassword,controlPasswordTwin};

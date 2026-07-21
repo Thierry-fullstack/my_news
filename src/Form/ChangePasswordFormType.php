@@ -48,6 +48,24 @@ class ChangePasswordFormType extends AbstractType
                     'label' => 'Mot de passe',
                 ],
                 'second_options' => [
+                    'constraints' => [
+                        new Sequentially([
+                            new NotBlank(
+                                message: '!',
+                            ),
+                            new Length(
+                                min: 10,
+                                max: 10,
+                                minMessage: '!',
+                                maxMessage: '!',
+                            ),
+                            new Regex(
+                                pattern: '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$/i',
+                                message: '!',
+                                htmlPattern: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10}$'
+                            )
+                        ])
+                    ],
                     'label' => 'Confirmation',
                 ],
                 'invalid_message' => '!',

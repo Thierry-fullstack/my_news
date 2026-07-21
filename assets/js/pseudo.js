@@ -4,7 +4,7 @@ import {successField,alertField} from "./fontions.js";
 * ^.{6,10}#[0-9]{2}$
  */
 const controlPseudo = function (champ,info) {
-    const pseudoRegex = new RegExp('^[a-zA-Z0-9 -\'èçàéï]{2,30}$');
+    const pseudoRegex = new RegExp('^[a-zA-Z0-9 -\'èçàéï]{6,30}$');
     champ.value.match(pseudoRegex) ? successField(champ,info) : alertField(champ,info);
 }
 

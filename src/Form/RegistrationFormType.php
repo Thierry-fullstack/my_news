@@ -47,9 +47,9 @@ class RegistrationFormType extends AbstractType
                     new Sequentially([
                         new NotBlank(message: '!'),
                         new Regex(
-                            pattern: '/^[a-zA-Z0-9 -\'èçàéï]{2,50}$/i',
+                            pattern: '/^[a-zA-Z0-9 -\'èçàéï]{6,50}$/i',
                             message: '',
-                            htmlPattern: '^[a-zA-Z0-9 -\'èçàéï]{2,50}$',
+                            htmlPattern: '^[a-zA-Z0-9 -\'èçàéï]{6,50}$',
                         )
                     ])
                 ]

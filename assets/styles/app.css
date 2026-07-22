@@ -67,17 +67,20 @@ html,body{
     height: 40px;
 }
 .contact-wrapper {
-    /*border-radius: 20px;*/
     overflow: hidden;
-    /*box-shadow: 0 5px 30px rgba(0,0,0,0.1);*/
     background-color: #f4f4f4;
     box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 2px;
 
+}
+.contact-wrapper:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form {
     padding: 35px;
-
 }
 /*
 .form-control {
@@ -154,7 +157,7 @@ li {
 /* concerne info envoi lien email reset */
 .card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 .card:hover {
     transform: translateY(-10px);

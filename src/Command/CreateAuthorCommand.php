@@ -2,23 +2,21 @@
 
 namespace App\Command;
 
-
 use App\Entity\Portrait;
 use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-
-#[AsCommand(name: 'app:create-administrator',description: 'Creation compte Adminsitrateur')]
-class CreateAdministratorCommand extends Command
+#[AsCommand(name: 'app:create-author',description: 'Creation compte Auteur')]
+class CreateAuthorCommand extends Command
 {
 
     private EntityManagerInterface $em;
@@ -33,11 +31,11 @@ class CreateAdministratorCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('email',InputArgument::OPTIONAL,'Email - obligaoire')
-            ->addArgument('password',InputArgument::OPTIONAL,'Mot de passe - obligatoire')
+            ->addArgument('email',InputArgument::OPTIONAL,'Email - obligatoire')
+            ->addArgument('password',InputArgument::OPTIONAL,'Mot de passe obligatoire')
             ->addArgument('pseudo',InputArgument::OPTIONAL,'Pseudonyme - obligatoire');
     }
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(InputInterface $input,OutputInterface $output): int
     {
         $helper = $this->getHelper('question');
         $io = new SymfonyStyle($input,$output);
@@ -59,20 +57,19 @@ class CreateAdministratorCommand extends Command
 
         $user = new User();
         $user->setPassword($this->userPasswordHasher->hashPassword($user, $plainPassword))
-                            ->setEmail($email)
-                            ->setPseudo($pseudo)
-                            ->setRoles(['ROLE_ADMIN'])
-                            ->setCreatedAt(new DateTimeImmutable())
-                            ->setIsVerified(true);
+            ->setEmail($email)
+            ->setPseudo($pseudo)
+            ->setRoles(['ROLE_ADMIN'])
+            ->setCreatedAt(new DateTimeImmutable())
+            ->setIsVerified(true);
         $image = new Portrait();
-                        $image->setName('default.webp');
-                        $image->setAlt($user->getEmail());
-                        $user->setPortrait($image);
+        $image->setName('default.webp');
+        $image->setAlt($user->getEmail());
+        $user->setPortrait($image);
 
         $this->em->persist($user);
         $this->em->flush();
         $io->success('le compte administrateur a été créé !');
         return Command::SUCCESS;
-
     }
 }

@@ -6,7 +6,7 @@ import {controlPassword} from "./password.js";
 import {controlCheckbox} from "./checkbox.js";
 
 window.onload = () =>{
-    const registerForm = document.querySelector('#registerForm');
+    const registerForm = document.querySelector('#registration_form');
     if(registerForm){
         /* elements dom */
         const inputAll = registerForm.getElementsByTagName('input');
@@ -40,7 +40,7 @@ window.onload = () =>{
         const registration_form_plainPassword_error = registerForm.querySelector('#registration_form_plainPassword_error1');
         const registration_form_agreeTerms_error = registerForm.querySelector('#registration_form_agreeTerms_error1');
         /* unactivited submit button */
-        registration_form_register.setAttribute('disabled','disabled');
+        /*registration_form_register.setAttribute('disabled','disabled');*/
 
         /* onload form begin */
         let message = "* champs obligatoires"
@@ -138,34 +138,42 @@ window.onload = () =>{
             checkFieldsRegister(inputAll,registration_form_register);
         });
 
-        /* eventListener Submit field */
+        /* eventListener Submit field registration_form_register */
         registration_form_register.addEventListener('click',function( event){
-            let inputs = registerForm.getElementsByTagName('input');
-            let fieldsSuccess = [];
+
+            let inputs = [];
+            for(let i = 0; i < inputAll.length; i++)
+            {
+                if(inputAll[i].type==='email' || inputAll[i].type==='text' || inputAll[i].type==='file' || inputAll[i].type==='password' || inputAll[i].type==='checkbox')
+                {
+                    inputs[i] = inputAll[i];
+                }
+            }
             let counter = 0;
-            for(let i = 0; i < inputs.length; i++){
-                if(inputs[i].type ==='email' || inputs[i].type ==='text' || inputs[i].type ==='password' || inputs[i].type ==='file' || inputs[i].type ==='checkbox'){
-                    fieldsSuccess[i]=inputs[i];
+            for(let i = 0; i < inputs.length; i++)
+            {
+                if(!(inputs[i].type ==='checkbox') && inputs[i].value ==='' || !(inputs[i].type ==='checkbox') && !(inputs[i].classList.contains('is-valid')))
+                {
+                    alertChamps(inputs[i]);
+                    counter++;
                 }
-            }
-            for(let i = 0; i < fieldsSuccess.length; i ++){
-                if( fieldsSuccess[i].value==="" || fieldsSuccess[i].classList.contains('is-invalid'))
+                if(inputs[i].type==='checkbox' && !(inputs[i].checked))
+                {
+                    alertChamps(inputs[i]);
+                    counter++;
+                }
+                if(inputs[i].type==="hidden" && inputs[i].value!=="")
                 {
                     counter++;
-                    alertChamps(fieldsSuccess[i]);
-                }
-                if(fieldsSuccess[i].type==='checkbox' && !fieldsSuccess[i].checked)
-                {
-                    counter++;
-                    alertChamps(fieldsSuccess[i]);
                 }
             }
-          //  console.log(counter);
-            if(  counter > 0 ){
-                event.preventDefault();
-                event.stopImmediatePropagation();
-                return false;
-            }
+
+                if(counter > 0 ) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    return false;
+                }
+
         });
     }
 }

@@ -77,6 +77,7 @@ const checkFieldsRegister = function(champs,bouton)
                 counter++;
             }
 
+
         }
         //console.log(counter);
         if(counter === fieldSelect.length)
@@ -84,7 +85,7 @@ const checkFieldsRegister = function(champs,bouton)
             bouton.classList.remove('btn-outline-dark');
             bouton.classList.add('btn-dark');
             bouton.textContent="Validez votre saisie"
-            bouton.removeAttribute('disabled','disabled');
+            bouton.removeAttribute('disabled');
         }else if(counter !== fieldSelect.length)
         {
             bouton.classList.remove('btn-dark');

@@ -31,7 +31,7 @@ class AppUserFixtures extends Fixture
             $user->getRoles()==['ROLE_USER'] ? $user->setIsLetter(true) : $user->setIsLetter(false);
             $user->setPassword($this->hasher->hashPassword($user, 'ArethiA75!'));
             $portrait = new Portrait();
-            $portrait->setName('default.webp');
+            $portrait->setName('portrait.webp');
             $portrait->setAlt($user->getEmail());
             $user->setPortrait($portrait);
             $manager->persist($user);

@@ -15,23 +15,19 @@
                         <div class="col-md-4">
                             <div class="contact-info h-100" >
                                 <h6 class="mb-3 text-warning">Indications :</h6>
-                                <p class="my-3 text-warning-emphasis text-sm-center" id="dialogRegister"></p>
+                                <p class="my-3 text-info-emphasis text-sm-center" id="dialogRegister">&nbsp;</p>
                                 <ul class="text-info-emphasis">
                                     <li class="contact-item">
-                                        <p class="fw-light" id="email-info"><i class="bi bi-envelope-at"></i>
-                                            &nbsp;Email</p>
+                                        <p class="fw-light text-info-emphasis" id="email-info">Email</p>
                                     </li>
                                     <li class="contact-item">
-                                        <p class="fw-light" id="pseudo-info"><i class="bi bi-person-fill"></i>
-                                            &nbsp;Pseudo</p>
+                                        <p class="fw-light text-info-emphasis" id="pseudo-info">Pseudo</p>
                                     </li>
                                     <li class="contact-item">
-                                        <p class="fw-light " id="portrait-info"><i class="bi bi-camera-fill"></i>
-                                            &nbsp;Portrait</p>
+                                        <p class="fw-light text-info-emphasis" id="portrait-info">Portrait</p>
                                     </li>
                                     <li class="contact-item">
-                                        <p class="fw-light " id="password-info"><i class="bi bi-incognito"></i>
-                                            &nbsp;Mot de passe</p>
+                                        <p class="fw-light text-info-emphasis" id="password-info">Mot de passe</p>
                                     </li>
 
                                     <div class="contact-item mb-5" id="password-info">
@@ -45,8 +41,7 @@
                                     </div>
 
                                     <li class="contact-item">
-                                        <p class="fw-light" id="agree-info"><i class="bi bi-pencil-square"></i>
-                                            &nbsp;Contrat </p>
+                                        <p class="fw-light text-info-emphasis" id="agree-info">Contrat </p>
                                     </li>
                                 </ul>
                             </div>
@@ -58,7 +53,7 @@
                                     <h1 class="mb-3 text-sm-center shadow-sm fst-italic text-primary">Inscription</h1>
                                 </div>
                                 <hr class="text-warning" />
-                                {{ form_start(registrationForm,{attr:{id:'registerForm',novalidate:'novalidate'}}) }}
+                                {{ form_start(registrationForm,{attr:{id:'registration_form',novalidate:'novalidate'}}) }}
                                 <div class="form-floating mb-3">
                                     {{ form_widget(registrationForm.email) }}
                                     {{ form_label(registrationForm.email)}}
@@ -96,10 +91,9 @@
                                         {{ form_errors(registrationForm.agreeTerms)}}
                                         <small id="errorAgreeTerms"></small>
                                     </div>
-                                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
                                 </div>
                                 <div class="d-grid">
-                                    {{ form_row(registrationForm.register,{ attr:{ class:'btn btn-outline-dark text-capitalize col-12 mx-auto' } }) }}
+                                    {{ form_row(registrationForm.register,{ attr:{ class:'btn btn-outline-primary text-capitalize col-12 mx-auto' } }) }}
                                 </div>
                                 {{ form_end(registrationForm) }}
                                 <div class="text-center mt-3">

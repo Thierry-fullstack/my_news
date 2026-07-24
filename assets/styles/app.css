@@ -1,5 +1,5 @@
 
-html,body{
+html,body {
     margin: auto;
     height: 100%;
     width: auto;
@@ -30,7 +30,7 @@ html,body{
 
 #card-login{
     border-radius: 1px;
-    box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
+    box-shadow: 0 0 0 #948E87, 0 0 0 #948E87, 0 0 2px #948E87;
     background-color: #FAFAFA;
 }
 #labelAgreeRegister{
@@ -53,7 +53,7 @@ html,body{
 
 .card {
     border-radius: 1px;
-    box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
+    box-shadow: 0 0 0 #948E87, 0 0 0 #948E87, 0 0 2px #948E87;
 }
 .card-body {
     padding: 2rem;
@@ -69,7 +69,7 @@ html,body{
 .contact-wrapper {
     overflow: hidden;
     background-color: #f4f4f4;
-    box-shadow: 0 0 0px #948E87, 0 0 0px #948E87, 0 0 2px #948E87;
+    box-shadow: 0 0 0 #948E87, 0 0 0 #948E87, 0 0 2px #948E87;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border-radius: 2px;
 
@@ -118,7 +118,7 @@ html,body{
     transform: translateX(10px);
 }
 
-li {
+    & li {
     list-style-type: none;
 }
 #password_criteria{
@@ -185,6 +185,55 @@ li {
 }
 .fadeInUp {
     animation: fadeInUp 0.7s ease-out;
+}
+
+    .btn-purple {
+        color: #FFFFFF;
+        background-color: #490F96;
+        border-color: #130269;
+    }
+
+    .btn-purple:hover,
+    .btn-purple:focus,
+    .btn-purple:active,
+    .btn-purple.active,
+    .open .dropdown-toggle.btn-purple {
+        color: #FFFFFF;
+        background-color: #49247A;
+        border-color: #130269;
+    }
+
+    .btn-purple:active,
+    .btn-purple.active,
+    .open .dropdown-toggle.btn-purple {
+        background-image: none;
+    }
+
+    .btn-purple.disabled,
+    .btn-purple[disabled],
+    & fieldset[disabled] .btn-purple,
+    .btn-purple.disabled:hover,
+    .btn-purple[disabled]:hover,
+    & fieldset[disabled] .btn-purple:hover,
+    .btn-purple.disabled:focus,
+    .btn-purple[disabled]:focus,
+    & fieldset[disabled] .btn-purple:focus,
+    .btn-purple.disabled:active,
+    .btn-purple[disabled]:active,
+    & fieldset[disabled] .btn-purple:active,
+    .btn-purple.disabled.active,
+    .btn-purple[disabled].active,
+    & fieldset[disabled] .btn-purple.active {
+        background-color: #490F96;
+        border-color: #130269;
+    }
+
+    .btn-purple .badge {
+        color: #490F96;
+        background-color: #FFFFFF;
+    }
+#password_criteria li{
+    font-size: 9px;
 }
 
 

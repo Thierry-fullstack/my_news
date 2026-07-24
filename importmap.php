@@ -37,7 +37,7 @@ return [
         'type' => 'css',
     ],
     'register' => [
-        'path' => './assets/js/register.js',
+        'path' => './assets/js/registration_form/registration_form.js',
         'entrypoint' => true,
     ],
     'login' => [

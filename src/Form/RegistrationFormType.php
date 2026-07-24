@@ -29,9 +29,9 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email',EmailType::class,['attr'=>['class'=>'form-control text-primary-emphasis'],'required'=>true,
+            ->add('email',EmailType::class,['attr'=>['class'=>'form-control '],'required'=>true,
                 'label'=>'Email *',
-                'label_attr'=>['class'=>'form-check-label text-warning-emphasis'],
+                'label_attr'=>['class'=>'form-check-label','id'=>'email-label'],
                 'constraints'=>[
                     new Sequentially([
                         new NotBlank(message: 'Indiquez votre email'),
@@ -40,25 +40,25 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
             ])
-            ->add('pseudo',TextType::class,['attr'=>['class'=>'form-control text-primary-emphasis'],'required'=>true,
+            ->add('pseudo',TextType::class,['attr'=>['class'=>'form-control '],'required'=>true,
                 'label'=>'Pseudo *',
-                'label_attr'=>['class'=>'form-check-label text-warning-emphasis'],
+                'label_attr'=>['class'=>'form-check-label'],
                 'constraints'=>[
                     new Sequentially([
                         new NotBlank(message: '!'),
                         new Regex(
-                            pattern: '/^[a-zA-Z0-9 -\'èçàéï]{6,50}$/i',
+                            pattern: '/^[a-zA-Z0-9 -\'èçàéïâ]{6,50}$/i',
                             message: '',
-                            htmlPattern: '^[a-zA-Z0-9 -\'èçàéï]{6,50}$',
+                            htmlPattern: '^[a-zA-Z0-9 -\'èçàéïâ]{6,50}$',
                         )
                     ])
                 ]
             ])
             ->add('plainPassword', PasswordType::class,[
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password','class'=>'form-control text-secondary'],
+                'attr' => ['autocomplete' => 'new-password','class'=>'form-control'],
                 'label'=>'Mot de passe *',
-                'label_attr'=>['class'=>'form-check-label text-warning-emphasis'],
+                'label_attr'=>['class'=>'form-check-label'],
                 'constraints' => [
                     new Sequentially([
                         new NotBlank(
@@ -78,27 +78,27 @@ class RegistrationFormType extends AbstractType
                     ])
                 ],
             ])
-            ->add('portrait',FileType::class,['attr'=>['class'=>'form-control text-primary-emphasis' ,'type'=>'file','required'=>true],
+            ->add('portrait',FileType::class,['attr'=>['class'=>'form-control ' ,'type'=>'file','required'=>true],
                 'constraints'=>[
                     new Sequentially([
                         new NotBlank(['message'=>'!']),
                         new File(
-                            maxSize: '2M', filenameMaxLength: 2048, maxSizeMessage: ' ', filenameTooLongMessage: ' '
+                            maxSize: '2M', filenameMaxLength: 2048, maxSizeMessage: '2M ', filenameTooLongMessage: ' '
                             , extensions: ['jpeg','jpg'], extensionsMessage: " ",
                         ),
                         new Image(
-                            mimeTypes: ['image/jpeg'], minWidth: '1024', maxWidth: '1920', maxHeight: '1080', minHeight: '728',
-                            maxWidthMessage: ' ', minWidthMessage: ' ', maxHeightMessage: ' ', minHeightMessage: ' '
+                            mimeTypes: ['image/jpeg'], minWidth: '640', maxWidth: '1920', maxHeight: '1080', minHeight: '480',
+                            maxWidthMessage: 'maxW ', minWidthMessage: 'minW ', maxHeightMessage: 'mawH ', minHeightMessage: 'minH '
                         ),
 
                     ])
-                ],'multiple'=>false,'mapped'=>false,'required'=>true,'label'=>'Portrait *','label_attr'=>['class'=>'form-check-label text-warning-emphasis'] ],
+                ],'multiple'=>false,'mapped'=>false,'required'=>true,'label'=>'Portrait *','label_attr'=>['class'=>'form-check-label '] ],
 
             )
             ->add('agreeTerms', CheckboxType::class, ['attr'=>[],
                 'mapped' => false,
                 'label'=>'  Acceptation *',
-                'label_attr'=>['class'=>'form-check-label p-2 text-warning-emphasis','id'=>'labelAgreeRegister'],
+                'label_attr'=>['class'=>'form-check-label p-2'],
                 'constraints' => [
                     new IsTrue(
                         message: '!',
